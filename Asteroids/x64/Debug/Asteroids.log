@@ -1,0 +1,23 @@
+﻿  Engine.cpp
+  Entity.cpp
+  EntityManager.cpp
+  Interaction.cpp
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Constants.h(5,23): error C2086: const int Constants::windowWidth: předefinování
+  (kompilování zdrojového souboru EntityManager.cpp)
+  
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Constants.h(5,23): error C2086: const int Constants::windowWidth: předefinování
+  (kompilování zdrojového souboru Interaction.cpp)
+  
+  Item.cpp
+  main.cpp
+  Meteor.cpp
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Constants.h(5,23): error C2086: const int Constants::windowWidth: předefinování
+  (kompilování zdrojového souboru Meteor.cpp)
+  
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Meteor.cpp(25,14): error C2084: Funkce void Meteor::moveUp(void) už má tělo.
+  C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Meteor.cpp(23,14):
+  viz předchozí definice moveUp
+  
+  MovingEntity.cpp
+  Player.cpp
+  Generování kódu...

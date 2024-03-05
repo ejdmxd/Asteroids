@@ -13,5 +13,6 @@ public:
 	void moveRight() override;
 	void update() override;
 	void draw(sf::RenderWindow& window) override;
+	void loseHealth() override;
 };
 
