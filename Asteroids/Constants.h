@@ -1,8 +1,10 @@
 #pragma once
 
+
+// I have put constants separately, it is for better organization and now they are easier to edit.
 struct Constants {
 	static constexpr int windowWidth{ 800 };
-	static constexpr int windowWidth{ 800 };
+	static constexpr int windowHeight{ 800 };
 	static constexpr float meteorSpeed{ 6.0f };
 	static constexpr float playerWidth{ 60.0f };
 	static constexpr float playerSpeed{ 8.0f };

@@ -24,9 +24,6 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="MovingEntity.cpp">
-      <Filter>Zdrojové soubory</Filter>
-    </ClCompile>
     <ClCompile Include="Interaction.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
@@ -36,10 +33,10 @@
     <ClCompile Include="Meteor.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
+    <ClCompile Include="Item.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="EntityManager.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
   </ItemGroup>

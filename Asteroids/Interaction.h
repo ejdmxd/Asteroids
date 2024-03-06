@@ -4,7 +4,7 @@
 #include "Item.h"
 
 
-bool isInteracting(Entity& e1, Entity& e2);
+bool isInteracting(const Entity& e1, const Entity& e2);
 void handleCollision(Player& p, Meteor& m);
 void handleCollision(const Player& p, const Item& i);
 
