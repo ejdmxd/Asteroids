@@ -3,7 +3,7 @@
 sf::Texture Meteor::m_texture;
 
 Meteor::Meteor(float x, float y, int strength, float speed) {
-	//TODO m_texture.loadFromFile("");
+	m_texture.loadFromFile("meteor.png");
 	m_sprite.setTexture(m_texture);
 
 	m_sprite.setPosition(x, y);

@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Constants.h"
+
 class Entity
 {
 protected:
