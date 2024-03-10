@@ -35,36 +35,65 @@ void Player::update() {
 	m_sprite.move(m_velocity);
 }
 
-void Player::processPlayerInput() {
+void Player::moveHorizontally()
+{
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
 		if (x() >= 0) {
 			moveLeft();
-		} else {
+		}
+		else {
 			m_velocity.x = 0;
 		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
 		if (x() <= Constants::windowHeight) {
 			moveRight();
-		} else {
+		}
+		else {
 			m_velocity.x = 0;
 		}
 	}
+	else {
+		if (m_velocity.x > Constants::playersSlowestSpeed || m_velocity.x < -Constants::playersSlowestSpeed) {
+			m_velocity.x = m_velocity.x * Constants::slowRatio;
+		}
+		else {
+			m_velocity.x = 0;
+		}
+	}
+}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+void Player::moveVertically()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
 		if (y() < Constants::windowHeight) {
 			moveUp();
-		} else {
+		}
+		else {
 			m_velocity.y = 0;
 		}
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
 		if (y() > 0) {
 			moveDown();
-		} else {
+		}
+		else {
 			m_velocity.y = 0;
 		}
 	}
+	else {
+		if (m_velocity.y > Constants::playersSlowestSpeed || m_velocity.y < -Constants::playersSlowestSpeed) {
+			m_velocity.y = m_velocity.y * Constants::slowRatio;
+		}
+		else {
+			m_velocity.y = 0;
+		}
+	}
+}
+
+void Player::processPlayerInput() {
+	moveHorizontally();
+	moveVertically();
 }
 
 void Player::draw(sf::RenderWindow& window) {

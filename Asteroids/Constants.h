@@ -12,4 +12,6 @@ struct Constants {
 	static constexpr float meteorHeight{ 25.0f };
 	static constexpr float meteorStrength{ 3.0f };
 	static constexpr float playersHealth{ 100.f };
+	static constexpr float playersSlowestSpeed{ 0.5f };
+	static constexpr float slowRatio{ 0.95f };
 };

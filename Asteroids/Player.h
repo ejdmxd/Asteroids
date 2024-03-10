@@ -5,6 +5,8 @@ class Player : public MovingEntity
 {
 private:
 	static sf::Texture m_texture;
+	void moveHorizontally();
+	void moveVertically();
 	void processPlayerInput();
 public:
 	Player(float x, float y);
