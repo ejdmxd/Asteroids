@@ -10,7 +10,7 @@ Player::Player(float x, float y) : MovingEntity(){
 	m_velocity = { 0.0f, 0.0f };
 
 	m_sprite.setOrigin(getCentre());
-	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
+	m_sprite.setScale(sf::Vector2f(0.1f, 0.1f));
 
 	m_rotation = 0.0f;
 }
@@ -58,6 +58,17 @@ void Player::update() {
 	m_sprite.move(m_velocity);
 }
 
+bool Player::canPlayerSlow(const float velocity, const float position, const float screenLimit) {
+	return isItSlowestSpeed(velocity) && position + velocity > 0 && position + velocity < screenLimit;
+}
+
+bool Player::isItSlowestSpeed(const float velocity) {
+	return velocity > Constants::playersSlowestSpeed || velocity < -Constants::playersSlowestSpeed;
+}
+
+void Player::slowDown(float& position) {
+	position = position * Constants::slowRatio;
+}
 
 void Player::processPlayerInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
@@ -74,14 +85,14 @@ void Player::processPlayerInput() {
 		moveDown();
 	}
 	else {
-		if ((m_velocity.y > Constants::playersSlowestSpeed || m_velocity.y < -Constants::playersSlowestSpeed) && y()+m_velocity.y >0 && y() + m_velocity.y <Constants::windowHeight) {
-			m_velocity.y = m_velocity.y * Constants::slowRatio;
+		if (canPlayerSlow(m_velocity.y, y(), Constants::windowHeight)) {
+			slowDown(m_velocity.y);
 		}
 		else {
 			m_velocity.y = 0;
 		}
-		if ((m_velocity.x > Constants::playersSlowestSpeed || m_velocity.x < -Constants::playersSlowestSpeed) && x()+ m_velocity.x > 0 && x() + m_velocity.x < Constants::windowWidth){
-			m_velocity.x = m_velocity.x * Constants::slowRatio;
+		if (canPlayerSlow(m_velocity.x, x(), Constants::windowWidth)){
+			slowDown(m_velocity.x);
 		}
 		else {
 			m_velocity.x = 0;

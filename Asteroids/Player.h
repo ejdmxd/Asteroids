@@ -20,6 +20,9 @@ public:
 	void moveLeft() override;
 	void moveRight() override;
 	void update() override;
+	bool canPlayerSlow(const float velocity, const float position, const float screenLimit);
+	bool isItSlowestSpeed(const float velocity);
+	void slowDown(float& position);
 	void draw(sf::RenderWindow& window) override;
 	void loseHealth() override;
 };
