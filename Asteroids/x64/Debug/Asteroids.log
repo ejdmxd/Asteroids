@@ -1,6 +1,10 @@
-﻿  EntityManager.cpp
+﻿  Background.cpp
+  EntityManager.cpp
   Interaction.cpp
+  Movement.cpp
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Movement.cpp(4,18): warning C4305: inicializování: zkrácení z: double na: float
   Player.cpp
   main.cpp
   Generování kódu...
+  LINK : Soubor C:\Users\adik1\C++\SFML\Asteroids\x64\Debug\Asteroids.exe se nenašel nebo se při posledním přírůstkovém propojování nesestavil. Provádí se úplné propojení.
   Asteroids.vcxproj -> C:\Users\adik1\C++\SFML\Asteroids\x64\Debug\Asteroids.exe
