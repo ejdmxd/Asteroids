@@ -1,8 +1,6 @@
 #pragma once
-#define _USE_MATH_DEFINES
 
 #include "MovingEntity.h"
-#include <cmath>
 
 class Player : public MovingEntity
 {
@@ -16,6 +14,7 @@ private:
 	void processPlayerInput();
 public:
 	Player(float x, float y);
+	void checkBorders(float dx, float dy);
 	void moveUp() override;
 	void moveDown() override;
 	void moveLeft() override;

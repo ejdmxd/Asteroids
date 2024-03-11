@@ -1,7 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-
+#include <iostream>
+#include "Movement.h"
 #include "Constants.h"
 
 class Entity

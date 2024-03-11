@@ -6,27 +6,42 @@ Player::Player(float x, float y) : MovingEntity(){
 	m_texture.loadFromFile("playersSpaceship.png");
 	m_sprite.setTexture(m_texture);
 	m_sprite.setPosition(x, y);
-	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
 	m_velocity = { 0.0f, 0.0f };
 
 	m_sprite.setOrigin(getCentre());
+	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
 	m_rotation = 0.0f;
 }
 
+void Player::checkBorders(float dx, float dy)
+{
+	//TODO: In future maybe I will use it as a virtual function
+	if (checkWindowWidth(dx, *this)) {
+		m_velocity.x = dx;
+	}
+	else {
+		m_velocity.x = 0;
+	}
+	if (checkWindowHeight(dy, *this)) {
+		m_velocity.y = dy;
+	}
+	else {
+		m_velocity.y = 0;
+	}
+}
+
 void Player::moveUp() {
-	float dx = Constants::playerSpeed * std::cos(m_rotation* (M_PI / 180.0f));
-	float dy = Constants::playerSpeed * std::sin(m_rotation * (M_PI / 180.0f));
-	m_velocity.y = dy;
-	m_velocity.x = dx;
+	float dx = getXDirection(Constants::playerSpeed, m_rotation);
+	float dy = getYDirection(Constants::playerSpeed, m_rotation);
+	checkBorders(dx, dy);
 }
 
 void Player::moveDown() {
-	float dx = -Constants::playerSpeed * std::cos(m_rotation * (M_PI / 180.0f));
-	float dy = -Constants::playerSpeed * std::sin(m_rotation * (M_PI / 180.0f));
-	m_velocity.y = dy;
-	m_velocity.x = dx;
+	float dx = -getXDirection(Constants::playerSpeed, m_rotation);;
+	float dy = -getYDirection(Constants::playerSpeed, m_rotation);
+	checkBorders(dx, dy);
 }
 
 void Player::moveLeft() {
@@ -39,67 +54,10 @@ void Player::moveRight() {
 
 void Player::update() {
 	processPlayerInput();
+	m_sprite.setRotation(m_rotation);
 	m_sprite.move(m_velocity);
 }
 
-
-/*
-void Player::moveHorizontally()
-{
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
-		if (x() >= 0) {
-			moveLeft();
-		}
-		else {
-			m_velocity.x = 0;
-		}
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
-		if (x() <= Constants::windowHeight) {
-			moveRight();
-		}
-		else {
-			m_velocity.x = 0;
-		}
-	}
-	else {
-		if (m_velocity.x > Constants::playersSlowestSpeed || m_velocity.x < -Constants::playersSlowestSpeed) {
-			m_velocity.x = m_velocity.x * Constants::slowRatio;
-		}
-		else {
-			m_velocity.x = 0;
-		}
-	}
-}
-
-void Player::moveVertically()
-{
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
-		if (y() < Constants::windowHeight) {
-			moveUp();
-		}
-		else {
-			m_velocity.y = 0;
-		}
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
-		if (y() > 0) {
-			moveDown();
-		}
-		else {
-			m_velocity.y = 0;
-		}
-	}
-	else {
-		if (m_velocity.y > Constants::playersSlowestSpeed || m_velocity.y < -Constants::playersSlowestSpeed) {
-			m_velocity.y = m_velocity.y * Constants::slowRatio;
-		}
-		else {
-			m_velocity.y = 0;
-		}
-	}
-}
-*/
 
 void Player::processPlayerInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
@@ -116,13 +74,13 @@ void Player::processPlayerInput() {
 		moveDown();
 	}
 	else {
-		if (m_velocity.y > Constants::playersSlowestSpeed || m_velocity.y < -Constants::playersSlowestSpeed) {
+		if ((m_velocity.y > Constants::playersSlowestSpeed || m_velocity.y < -Constants::playersSlowestSpeed) && y()+m_velocity.y >0 && y() + m_velocity.y <Constants::windowHeight) {
 			m_velocity.y = m_velocity.y * Constants::slowRatio;
 		}
 		else {
 			m_velocity.y = 0;
 		}
-		if (m_velocity.x > Constants::playersSlowestSpeed || m_velocity.x < -Constants::playersSlowestSpeed) {
+		if ((m_velocity.x > Constants::playersSlowestSpeed || m_velocity.x < -Constants::playersSlowestSpeed) && x()+ m_velocity.x > 0 && x() + m_velocity.x < Constants::windowWidth){
 			m_velocity.x = m_velocity.x * Constants::slowRatio;
 		}
 		else {
@@ -132,7 +90,6 @@ void Player::processPlayerInput() {
 }
 
 void Player::draw(sf::RenderWindow& window) {
-	m_sprite.setRotation(m_rotation);
 	window.draw(m_sprite);
 }
 

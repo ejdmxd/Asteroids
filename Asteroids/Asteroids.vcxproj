@@ -138,6 +138,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Meteor.cpp" />
+    <ClCompile Include="Movement.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="Interaction.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Meteor.h" />
+    <ClInclude Include="Movement.h" />
     <ClInclude Include="MovingEntity.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
