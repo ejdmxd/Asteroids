@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Background.h"
 #include "Interaction.h"
+#include "HealthBar.h"
 #include <SFML/Graphics.hpp>
 
 class Game

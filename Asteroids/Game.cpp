@@ -16,6 +16,7 @@ void Game::startGame()
 	Meteor* meteor = new Meteor(300, 300);
 	Meteor* meteor1 = new Meteor(500, 500);
 	Player* player = new Player(10, 10);
+	HealthBar* healthBar = new HealthBar(*player);
 	while (gameWindow.isOpen()) {
 		gameWindow.clear(sf::Color::Black);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
@@ -24,10 +25,11 @@ void Game::startGame()
 		meteor->draw(gameWindow);
 		meteor1->draw(gameWindow);
 		player->draw(gameWindow);
-		gameWindow.draw(hpBar); //In future I should consider to make this health bar as a class, then I could add it to entities and also add interaction between it and another entities
-		player->update();
+		healthBar->draw(gameWindow);
 		handleCollision(*player, *meteor);
 		handleCollision(*player, *meteor1);
+		player->update();
+		healthBar->update();
 		gameWindow.display();
 	}
 	delete background;

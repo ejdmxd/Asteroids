@@ -16,6 +16,8 @@ Player::Player(float x, float y) : MovingEntity(){
 	//Defaultly actions are related to top left corner of a sprite
 	m_sprite.setOrigin(getCentre());
 	m_sprite.setScale(sf::Vector2f(0.1f, 0.1f));
+
+	setHealth(Constants::playersHealth);
 }
 
 void Player::checkBorders(float dx, float dy)
@@ -117,6 +119,6 @@ void Player::draw(sf::RenderWindow& window) {
 }
 
 void Player::loseHealth() {
-	
+	setHealth(*getHealth() - 10);
 }
 
