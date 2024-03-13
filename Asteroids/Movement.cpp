@@ -28,3 +28,10 @@ bool checkWindowHeight(float velocity, Entity& e)
 	bool podminka = e.y() + velocity > 0 && e.y() + velocity < Constants::windowHeight;
 	return podminka;
 }
+
+float generateDirection(int val1, int val2) {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(val1, val2);
+	return dis(rd);
+}

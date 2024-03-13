@@ -4,7 +4,6 @@ HealthBar::HealthBar(Player& player) {
 	m_playersHealth = player.getHealth();
 	hpBar.setFillColor(sf::Color(255, 0, 0, 128));
 	hpBar.setSize(sf::Vector2f((float)Constants::playersHealth * 0.5f, 100.f));
-	std::cout << Constants::playersHealth * 0.5f << std::endl;
 	hpBar.setPosition(250.f, 50.f);
 }
 

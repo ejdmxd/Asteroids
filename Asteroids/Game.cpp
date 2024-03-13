@@ -24,12 +24,15 @@ void Game::startGame()
 		background->draw(gameWindow);
 		meteor->draw(gameWindow);
 		meteor1->draw(gameWindow);
+		meteor->moveUp();
+		meteor->moveRight();
 		player->draw(gameWindow);
 		healthBar->draw(gameWindow);
 		handleCollision(*player, *meteor);
 		handleCollision(*player, *meteor1);
 		player->update();
 		healthBar->update();
+		meteor->update();
 		gameWindow.display();
 	}
 	delete background;

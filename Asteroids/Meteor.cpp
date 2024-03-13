@@ -5,30 +5,40 @@ sf::Texture Meteor::m_texture;
 Meteor::Meteor(float x, float y, int strength, float speed) {
 	m_texture.loadFromFile("meteor.png");
 	m_sprite.setTexture(m_texture);
-
 	m_sprite.setPosition(x, y);
 	m_velocity = { Constants::meteorSpeed, Constants::meteorSpeed };
 	m_sprite.setOrigin(getCentre());
 	m_sprite.setScale(sf::Vector2f(0.3f, 0.3f));
+	m_velocity = { 0.0f, 0.0f };
+
+
 }
 
 Meteor::Meteor(float x, float y, float speed) : Meteor(x, y, 1, speed) {
 
 }
 
-Meteor::Meteor(float x, float y) : Meteor(x, y, 1, 1) {
+Meteor::Meteor(float x, float y) : Meteor(x, y, 1) {
 
 }
 
 
 //Each meteor will have slithly different angle of its trail
-void Meteor::moveUp() {}
+void Meteor::moveUp() {
+	m_velocity.y = -1.0 * generateDirection(1, 3);
+}
 
-void Meteor::moveDown() {}
+void Meteor::moveDown() {
+	m_velocity.y = 1.0f * generateDirection(1, 3);
+}
 
-void Meteor::moveLeft() {}
+void Meteor::moveLeft() {
+	m_velocity.x = -1.0f * generateDirection(1, 3);
+}
 
-void Meteor::moveRight() {}
+void Meteor::moveRight() {
+	m_velocity.x = 1.0f * generateDirection(1, 3);
+}
 
 void Meteor::loseHealth() {/*TODO*/ }
 
@@ -43,3 +53,4 @@ void Meteor::update() {
 void Meteor::draw(sf::RenderWindow& window) {
 	window.draw(m_sprite);
 }
+

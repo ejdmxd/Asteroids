@@ -1,6 +1,7 @@
 #pragma once
 #include "MovingEntity.h"
 #include "Constants.h"
+#include "Movement.h"
 
 class Meteor : public MovingEntity
 {
