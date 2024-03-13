@@ -13,7 +13,9 @@ void HealthBar::update()
 	if (hpBar.getSize().x != *m_playersHealth * 5.f) {
 		hpBar.setSize(sf::Vector2f((float)*m_playersHealth * 0.5f, 20.f));
 	}
-	std::cout << *m_playersHealth << std::endl;
+	else if (*m_playersHealth == 0) {
+		m_destoyed = true;
+	}
 }
 
 void HealthBar::draw(sf::RenderWindow& window)

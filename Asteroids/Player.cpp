@@ -119,6 +119,11 @@ void Player::draw(sf::RenderWindow& window) {
 }
 
 void Player::loseHealth() {
-	setHealth(*getHealth() - 10);
+	if (*getHealth() > 0) {
+		setHealth(*getHealth() - 10);
+	}
+	else if (*getHealth() == 0) {
+		m_destoyed = true;
+	}
 }
 
