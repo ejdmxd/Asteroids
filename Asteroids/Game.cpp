@@ -12,29 +12,19 @@ void Game::startGame()
 	sf::RenderWindow gameWindow{ {Constants::windowWidth, Constants::windowHeight},
 		"Asteroids" };
 	gameWindow.setFramerateLimit(60);
-	Background* background = new Background(0, 0);
-	Meteor* meteor = new Meteor(300, 300);
-	Meteor* meteor1 = new Meteor(500, 500);
-	Player* player = new Player(10, 10);
-	meteor->moveUp();
-	meteor->moveRight();
-	HealthBar* healthBar = new HealthBar(*player);
+	EntityManager* manager = new EntityManager();
+
+	manager->create<Background>(0, 0);
+	manager->create<Meteor>(300, 300);
+	manager->create<Meteor>(500, 500);
+	manager->create<HealthBar>(manager->create<Player>(10, 10));
 	while (gameWindow.isOpen()) {
 		gameWindow.clear(sf::Color::Black);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 			break;
-		background->draw(gameWindow);
-		meteor->draw(gameWindow);
-		meteor1->draw(gameWindow);
-
-		player->draw(gameWindow);
-		healthBar->draw(gameWindow);
-		handleCollision(*player, *meteor);
-		handleCollision(*player, *meteor1);
-		player->update();
-		healthBar->update();
-		meteor->update();
+		manager->update();	
+		manager->refresh();
+		manager->draw(gameWindow);
 		gameWindow.display();
 	}
-	delete background;
 }

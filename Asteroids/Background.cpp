@@ -6,6 +6,7 @@ Background::Background(float x, float y) {
 	m_texture.loadFromFile("background.jpg");
 	m_sprite.setTexture(m_texture);
 	m_sprite.setPosition(x, y);
+	m_destoyed = false;
 }
 
 void Background::update() {

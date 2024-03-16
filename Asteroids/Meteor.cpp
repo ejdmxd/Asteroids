@@ -10,8 +10,7 @@ Meteor::Meteor(float x, float y, int strength, float speed) {
 	m_sprite.setOrigin(getCentre());
 	m_sprite.setScale(sf::Vector2f(0.3f, 0.3f));
 	m_velocity = { 0.0f, 0.0f };
-
-
+	m_destoyed = false;
 }
 
 Meteor::Meteor(float x, float y, float speed) : Meteor(x, y, 1, speed) {

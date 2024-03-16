@@ -10,13 +10,21 @@ void EntityManager::refresh()
 
 void EntityManager::draw(sf::RenderWindow& window)
 {
-   
+    applyOnAll([&window](Entity* entity) {
+        entity->draw(window);
+        });
 }
 
 void EntityManager::update()
 {
+    applyOnAll([](Entity* entity) {
+        entity->update();
+        });
 }
 
-void EntityManager::applyOnAll(std::function<void(Entity&)> func)
+vo
+
+void EntityManager::applyOnAll(std::function<void(Entity*)> func)
 {
+    std::for_each(m_allEntities.begin(), m_allEntities.end(), func);
 }
