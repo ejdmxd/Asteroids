@@ -16,6 +16,8 @@ void Game::startGame()
 	Meteor* meteor = new Meteor(300, 300);
 	Meteor* meteor1 = new Meteor(500, 500);
 	Player* player = new Player(10, 10);
+	meteor->moveUp();
+	meteor->moveRight();
 	HealthBar* healthBar = new HealthBar(*player);
 	while (gameWindow.isOpen()) {
 		gameWindow.clear(sf::Color::Black);
@@ -24,8 +26,7 @@ void Game::startGame()
 		background->draw(gameWindow);
 		meteor->draw(gameWindow);
 		meteor1->draw(gameWindow);
-		meteor->moveUp();
-		meteor->moveRight();
+
 		player->draw(gameWindow);
 		healthBar->draw(gameWindow);
 		handleCollision(*player, *meteor);

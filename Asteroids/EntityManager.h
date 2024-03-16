@@ -2,6 +2,7 @@
 #include "Meteor.h"
 #include "Item.h"
 #include "Player.h"
+#include <functional>
 class EntityManager
 {
 private:
@@ -10,7 +11,12 @@ private:
 	void draw(sf::RenderWindow& window);
 	void update();
 	void startSpawning();
-	template <typename T, typename... Args>
-	T& create(Args&&... args);
+	void applyOnAll(std::function<void (Entity&)> func);
+	template <class T, typename... Args>
+	T& create(Args&&... args) {
+		T* ptr = new T(std::forward<Args>(args)...);
+		m_allEntities.push_back(T);
+		return ptr;
+	}
 };
 

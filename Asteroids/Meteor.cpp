@@ -47,6 +47,9 @@ void Meteor::loseHealth() {/*TODO*/ }
 //Updates position of meteor
 void Meteor::update() {
 	m_sprite.move(m_velocity);
+	if (y() < 0 - 100 || y() > Constants::windowHeight + 100 || x() < 0-100 || x() > Constants::windowWidth + 100) {
+		m_destoyed = true;
+	}
 }
 
 //Draws meteor's sprite
