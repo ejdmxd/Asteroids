@@ -17,15 +17,18 @@ public:
 	void interaction();
 	void startSpawning();
 
-
-	void applyOn(std::function<void (Entity*)> func, std::vector<Entity*> entities);
-
+	
+	template <class T>
+	void applyOn(std::function<void(T*)> func, std::vector<T*> entities) {
+			std::for_each(entities.begin(), entities.end(), func);
+	}
+	
 	template <class T>
 	std::vector<T*> selectGroup() {
 		std::vector<T*> selectedEntities;
 		for (Entity* entity : m_allEntities) {
 			if (dynamic_cast<T*>(entity) != nullptr) {
-				selectedEntities.push_back(entity);
+				selectedEntities.push_back(dynamic_cast<T*>(entity));
 			}
 		}
 		return selectedEntities;

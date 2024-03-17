@@ -10,39 +10,42 @@ void EntityManager::refresh()
 
 void EntityManager::draw(sf::RenderWindow& window)
 {
-    applyOn([&window](Entity* entity) {
-        entity->draw(window);
-        }, m_allEntities);
+    if (!m_allEntities.empty()) {
+        applyOn<Entity>([&window](Entity* entity) {
+            entity->draw(window);
+            }, m_allEntities);
+    }
 }
 
 void EntityManager::update()
 {
-    applyOn([](Entity* entity) {
-        entity->update();
-        }, m_allEntities);
+    if (!m_allEntities.empty()) {
+        applyOn<Entity>([](Entity* entity) {
+            entity->update();
+            }, m_allEntities);
+    }
 }
 
 void EntityManager::interaction() {
-    auto players = selectGroup<Player>();
-    auto meteors = selectGroup<Meteor>();
-
-    applyOn([&players](Meteor* meteor) {
-        for (Player* player : players) {
-            handleCollision(*player, *meteor);
+    if (!m_allEntities.empty()) {
+        auto players = selectGroup<Player>();
+        auto meteors = selectGroup<Meteor>();
+        if(!players.empty() && !meteors.empty()){
+            applyOn<Meteor>([&players](Meteor* meteor) {
+            for (Player* player : players) {
+                handleCollision(*player, *meteor);
+            }
+            }, meteors);
         }
-        }, meteors);
-}
-
-
-void EntityManager::applyOn(std::function<void(Entity*)> func, std::vector<Entity*> entities)
-{
-    std::for_each(entities.begin(), entities.end(), func);
+    }
 }
 
 
 EntityManager::~EntityManager() {
-    for (auto it = m_allEntities.begin(); it != m_allEntities.end(); ++it) {
-        delete *it;
+    if (!m_allEntities.empty()) {
+        for (auto it = m_allEntities.begin(); it != m_allEntities.end(); ++it) {
+            delete* it;
+        }
+        m_allEntities.clear();
     }
-    m_allEntities.clear();
 }

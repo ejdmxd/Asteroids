@@ -23,6 +23,7 @@ void Game::startGame()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 			break;
 		manager->update();	
+		manager->interaction();
 		manager->refresh();
 		manager->draw(gameWindow);
 		gameWindow.display();
