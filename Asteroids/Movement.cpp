@@ -29,6 +29,8 @@ bool checkWindowHeight(float velocity, Entity& e)
 	return podminka;
 }
 
+
+// Generates random number
 float generateDirection(int val1, int val2) {
 	std::random_device rd;
 	std::mt19937 gen(rd());

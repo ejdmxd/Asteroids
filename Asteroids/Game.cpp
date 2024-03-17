@@ -8,7 +8,6 @@ Game::Game() {
 
 void Game::startGame()
 {
-	std::cout << "Zdravim" << std::endl;
 	sf::RenderWindow gameWindow{ {Constants::windowWidth, Constants::windowHeight},
 		"Asteroids" };
 	gameWindow.setFramerateLimit(60);

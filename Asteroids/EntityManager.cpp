@@ -2,6 +2,7 @@
 
 void EntityManager::refresh()
 {
+    // Remove destroyed entities from the entity list
     if (!m_allEntities.empty()) {
         m_allEntities.erase(std::remove_if(m_allEntities.begin(), m_allEntities.end(),
             [](Entity* entity) { return entity->isDestroyed(); }), m_allEntities.end());
@@ -27,6 +28,7 @@ void EntityManager::update()
 }
 
 void EntityManager::interaction() {
+    // Handle interactions between players and meteors
     if (!m_allEntities.empty()) {
         auto players = selectGroup<Player>();
         auto meteors = selectGroup<Meteor>();
@@ -42,6 +44,7 @@ void EntityManager::interaction() {
 
 
 EntityManager::~EntityManager() {
+    // Destructor to clean up memory allocated for entities.
     if (!m_allEntities.empty()) {
         for (auto it = m_allEntities.begin(); it != m_allEntities.end(); ++it) {
             delete* it;
