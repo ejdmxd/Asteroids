@@ -10,21 +10,39 @@ void EntityManager::refresh()
 
 void EntityManager::draw(sf::RenderWindow& window)
 {
-    applyOnAll([&window](Entity* entity) {
+    applyOn([&window](Entity* entity) {
         entity->draw(window);
-        });
+        }, m_allEntities);
 }
 
 void EntityManager::update()
 {
-    applyOnAll([](Entity* entity) {
+    applyOn([](Entity* entity) {
         entity->update();
-        });
+        }, m_allEntities);
 }
 
-vo
+void EntityManager::interaction() {
+    auto players = selectGroup<Player>();
+    auto meteors = selectGroup<Meteor>();
 
-void EntityManager::applyOnAll(std::function<void(Entity*)> func)
+    applyOn([&players](Meteor* meteor) {
+        for (Player* player : players) {
+            handleCollision(*player, *meteor);
+        }
+        }, meteors);
+}
+
+
+void EntityManager::applyOn(std::function<void(Entity*)> func, std::vector<Entity*> entities)
 {
-    std::for_each(m_allEntities.begin(), m_allEntities.end(), func);
+    std::for_each(entities.begin(), entities.end(), func);
+}
+
+
+EntityManager::~EntityManager() {
+    for (auto it = m_allEntities.begin(); it != m_allEntities.end(); ++it) {
+        delete *it;
+    }
+    m_allEntities.clear();
 }
