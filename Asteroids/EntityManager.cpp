@@ -42,6 +42,24 @@ void EntityManager::interaction() {
     }
 }
 
+void EntityManager::startSpawning() {
+    if (!m_isAdding) {
+        m_isAdding = true;
+
+        auto addMeteor = [this]() {
+            std::this_thread::sleep_for(std::chrono::seconds(5));
+            {
+                std::lock_guard<std::mutex> guard(m_mutex);
+                create<Meteor>(500.f, 500.f);
+            }
+            m_isAdding = false;
+            };
+
+        std::thread meteorThread(addMeteor);
+        meteorThread.detach();
+    }
+}
+
 
 EntityManager::~EntityManager() {
     // Destructor to clean up memory allocated for entities.

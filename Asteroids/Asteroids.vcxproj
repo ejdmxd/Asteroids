@@ -131,7 +131,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -146,10 +145,10 @@
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="Constants.h" />
-    <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="Interaction.h" />
     <ClInclude Include="Item.h" />

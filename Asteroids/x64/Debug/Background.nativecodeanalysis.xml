@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\SFML\SFML-2.6.1-windows-vc17-64-bit\SFML-2.6.1\include\SFML\Graphics\</FILEPATH>
+      <FILENAME>Glyph.hpp</FILENAME>
+      <LINE>49</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Proměnná sf::Glyph::lsbDelta není inicializovaná. Vždy inicializujte proměnnou člena (type.6).</DESCRIPTION>
+    <FUNCTION>sf::Glyph::{ctor}</FUNCTION>
+    <DECORATED>??0Glyph@sf@@QEAA@XZ</DECORATED>
+    <FUNCLINE>49</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>sf::Glyph::lsbDelta</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\SFML\SFML-2.6.1-windows-vc17-64-bit\SFML-2.6.1\include\SFML\Graphics\</FILEPATH>
+      <FILENAME>Glyph.hpp</FILENAME>
+      <LINE>49</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Proměnná sf::Glyph::rsbDelta není inicializovaná. Vždy inicializujte proměnnou člena (type.6).</DESCRIPTION>
+    <FUNCTION>sf::Glyph::{ctor}</FUNCTION>
+    <DECORATED>??0Glyph@sf@@QEAA@XZ</DECORATED>
+    <FUNCLINE>49</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>sf::Glyph::rsbDelta</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\adik1\C++\SFML\Asteroids\Asteroids\</FILEPATH>
+      <FILENAME>Entity.h</FILENAME>
+      <LINE>26</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Proměnná Entity::m_destoyed není inicializovaná. Vždy inicializujte proměnnou člena (type.6).</DESCRIPTION>
+    <FUNCTION>Entity::{ctor}</FUNCTION>
+    <DECORATED>??0Entity@@QEAA@XZ</DECORATED>
+    <FUNCLINE>26</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Entity::m_destoyed</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

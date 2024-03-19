@@ -24,7 +24,7 @@ Meteor::Meteor(float x, float y) : Meteor(x, y, 1) {
 
 //Each meteor will have slithly different angle of its trail
 void Meteor::moveUp() {
-	m_velocity.y = -1.0 * generateDirection(1, 3);
+	m_velocity.y = -1.0f * generateDirection(1, 3);
 }
 
 void Meteor::moveDown() {

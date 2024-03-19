@@ -1,9 +1,6 @@
 #include "Game.h"
 
 Game::Game() {
-	hpBar.setFillColor(sf::Color(255, 0, 0, 128));
-	hpBar.setSize(sf::Vector2f((float)Constants::playersHealth*5.f, 20.f));
-	hpBar.setPosition(10.f, 10.f);
 }
 
 void Game::startGame()
@@ -13,14 +10,15 @@ void Game::startGame()
 	gameWindow.setFramerateLimit(60);
 	EntityManager* manager = new EntityManager();
 
-	manager->create<Background>(0, 0);
-	manager->create<Meteor>(300, 300);
-	manager->create<Meteor>(500, 500);
+	manager->create<Background>(0.f, 0.f);
+	manager->create<Meteor>(300.f, 300.f);
+	manager->create<Meteor>(500.f, 500.f);
 	manager->create<HealthBar>(manager->create<Player>(10, 10));
 	while (gameWindow.isOpen()) {
 		gameWindow.clear(sf::Color::Black);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 			break;
+		manager->startSpawning();
 		manager->update();	
 		manager->interaction();
 		manager->refresh();

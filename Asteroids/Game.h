@@ -9,9 +9,10 @@
 
 class Game
 {
-	sf::RectangleShape hpBar;
+	GameState m_gameState{ GameState::Playing };
 public:
 	Game();
 	void startGame();
+	GameState getGameState() { return m_gameState;  }
 };
 

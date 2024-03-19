@@ -4,12 +4,17 @@
 #include "Player.h"
 #include "HealthBar.h"
 #include "Interaction.h"
+#include "GameState.h"
+#include <thread>
+#include <mutex>
 #include <functional>
 
 
 // EntityManager class manages entities in the game world.
 class EntityManager
 {
+	std::mutex m_mutex;
+	bool m_isAdding = false;
 public:
 	// Vector containing all entities.
 	std::vector<Entity*> m_allEntities;
