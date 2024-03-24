@@ -47,10 +47,45 @@ void EntityManager::startSpawning() {
         m_isAdding = true;
 
         auto addMeteor = [this]() {
-            std::this_thread::sleep_for(std::chrono::seconds(5));
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             {
+                auto position = generateDirection(1, 2);
+                float x;
+                float y;
+                if (position == 1) {
+                    auto coinFlip = generateDirection(1, 2);
+                    if (coinFlip == 1) {
+                        y = 0;
+                    }
+                    else {
+                        y = Constants::windowHeight;
+                    }
+                    x = generateDirection(0, Constants::windowWidth);
+                }
+                else {
+                    auto coinFlip = generateDirection(1, 2);
+                    if (coinFlip == 1) {
+                        x = 0;
+                    }
+                    else {
+                        x = Constants::windowWidth;
+                    }
+                    y = generateDirection(0, Constants::windowHeight);
+                }
                 std::lock_guard<std::mutex> guard(m_mutex);
-                create<Meteor>(500.f, 500.f);
+                Meteor* meteor = create<Meteor>(x, y);
+                if (x < Constants::meteorWidth / 2) {
+                    meteor->moveRight();
+                }
+                else {
+                    meteor->moveLeft();
+                }
+                if (y < Constants::meteorHeight / 2) {
+                    meteor->moveDown();
+                }
+                else {
+                    meteor->moveUp();
+                }
             }
             m_isAdding = false;
             };

@@ -13,7 +13,7 @@ void Game::startGame()
 	manager->create<Background>(0.f, 0.f);
 	manager->create<Meteor>(300.f, 300.f);
 	manager->create<Meteor>(500.f, 500.f);
-	manager->create<HealthBar>(manager->create<Player>(10, 10));
+	manager->create<HealthBar>(*manager->create<Player>(10, 10));
 	while (gameWindow.isOpen()) {
 		gameWindow.clear(sf::Color::Black);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))

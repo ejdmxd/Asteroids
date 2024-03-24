@@ -45,10 +45,10 @@ public:
 
 	// Creates an entity of the specified type with the provided arguments.
 	template <class T, typename... Args>
-	T& create(Args&&... args) {
+	T* create(Args&&... args) {
 		T* ptr = new T(std::forward<Args>(args)...);
 		m_allEntities.push_back(ptr);
-		return *ptr;
+		return ptr;
 	}
 
 	~EntityManager();
