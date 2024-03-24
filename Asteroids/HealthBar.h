@@ -8,6 +8,7 @@ public:
 	HealthBar(Player& player);
 	void update();
 	void draw(sf::RenderWindow& window);
+	float* getHealth() { return m_playersHealth;  }
 };
 
 

@@ -9,13 +9,14 @@ C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(51,36): warning C424
   (kompilování zdrojového souboru Game.cpp)
   C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(51,36):
   kontext vytváření instancí šablony (první nejstarší) je
-  	C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Game.cpp(16,37):
+  	C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Game.cpp(16,55):
   	Zobrazit odkaz na kompilované vytváření instancí funkce šablona T *EntityManager::create<Player,int,int>(int &&,int &&)
           with
           [
               T=Player
           ]
   
+  HealthBar.cpp
   main.cpp
   Generování kódu...
   Asteroids.vcxproj -> C:\Users\adik1\C++\SFML\Asteroids\x64\Debug\Asteroids.exe

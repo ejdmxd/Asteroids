@@ -10,6 +10,7 @@
 class Game
 {
 	GameState m_gameState{ GameState::Playing };
+	float* m_playersHealth;
 public:
 	Game();
 	void startGame();
