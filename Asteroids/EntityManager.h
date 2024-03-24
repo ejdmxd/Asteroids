@@ -25,6 +25,8 @@ public:
 	void interaction();
 	void startSpawning();
 
+	void setMeteorDirection(Meteor* meteor);
+
 	// Applies the given function to each entity in the provided vector.
 	template <class T>
 	void applyOn(std::function<void(T*)> func, std::vector<T*> entities) {

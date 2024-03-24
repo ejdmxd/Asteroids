@@ -49,43 +49,29 @@ void EntityManager::startSpawning() {
         auto addMeteor = [this]() {
             std::this_thread::sleep_for(std::chrono::seconds(1));
             {
-                auto position = generateDirection(1, 2);
-                float x;
-                float y;
-                if (position == 1) {
-                    auto coinFlip = generateDirection(1, 2);
-                    if (coinFlip == 1) {
-                        y = 0;
-                    }
-                    else {
-                        y = Constants::windowHeight;
-                    }
-                    x = generateDirection(0, Constants::windowWidth);
-                }
-                else {
-                    auto coinFlip = generateDirection(1, 2);
-                    if (coinFlip == 1) {
-                        x = 0;
-                    }
-                    else {
-                        x = Constants::windowWidth;
-                    }
+                int direction = generateDirection(1, 4);
+                float x, y;
+                switch (direction) {
+                case 1:
+                    x = 0;
                     y = generateDirection(0, Constants::windowHeight);
+                    break;
+                case 2:
+                    x = generateDirection(0, Constants::windowWidth);
+                    y = 0;
+                    break;
+                case 3: 
+                    x = Constants::windowWidth;
+                    y = generateDirection(0, Constants::windowHeight);
+                    break;
+                default: 
+                    x = generateDirection(0, Constants::windowWidth);
+                    y = Constants::windowHeight;
+                    break;
                 }
                 std::lock_guard<std::mutex> guard(m_mutex);
                 Meteor* meteor = create<Meteor>(x, y);
-                if (x < Constants::meteorWidth / 2) {
-                    meteor->moveRight();
-                }
-                else {
-                    meteor->moveLeft();
-                }
-                if (y < Constants::meteorHeight / 2) {
-                    meteor->moveDown();
-                }
-                else {
-                    meteor->moveUp();
-                }
+                setMeteorDirection(meteor);
             }
             m_isAdding = false;
             };
@@ -95,6 +81,20 @@ void EntityManager::startSpawning() {
     }
 }
 
+void EntityManager::setMeteorDirection(Meteor* meteor) {
+    if (meteor->x() < Constants::meteorWidth / 2) {
+        meteor->moveRight();
+    }
+    else {
+        meteor->moveLeft();
+    }
+    if (meteor->y() < Constants::meteorHeight / 2) {
+        meteor->moveDown();
+    }
+    else {
+        meteor->moveUp();
+    }
+}
 
 EntityManager::~EntityManager() {
     // Destructor to clean up memory allocated for entities.
