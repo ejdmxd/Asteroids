@@ -7,10 +7,13 @@
 #include "EntityManager.h"
 #include <SFML/Graphics.hpp>
 
+
 class Game
 {
 	GameState m_gameState{ GameState::Playing };
 	float* m_playersHealth;
+	sf::Text m_textState;
+	sf::Font alegreyaSans;
 public:
 	Game();
 	void startGame();

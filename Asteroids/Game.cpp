@@ -1,6 +1,12 @@
 #include "Game.h"
 
 Game::Game() {
+	alegreyaSans.loadFromFile("AlegreyaSansSC-ExtraBold.ttf");
+	m_textState.setFont(alegreyaSans);
+	m_textState.setString("");
+	m_textState.setPosition(Constants::windowWidth / 2.0f - 125.0f, Constants::windowHeight / 2.0f - 100.0f);
+	m_textState.setCharacterSize(32);
+	m_textState.setFillColor(sf::Color::White);
 }
 
 void Game::startGame()
@@ -11,8 +17,6 @@ void Game::startGame()
 	EntityManager* manager = new EntityManager();
 
 	manager->create<Background>(0.f, 0.f);
-	manager->create<Meteor>(300.f, 300.f);
-	manager->create<Meteor>(500.f, 500.f);
 	m_playersHealth = manager->create<HealthBar>(*manager->create<Player>(10, 10))->getHealth();
 	while (gameWindow.isOpen()) {
 		gameWindow.clear(sf::Color::Black);
@@ -29,8 +33,10 @@ void Game::startGame()
 			manager->draw(gameWindow);
 		}
 		else if (m_gameState == GameState::GameOver) {
-			//TODO
+			m_textState.setString("Game Over!");
+			gameWindow.draw(m_textState);
 		}
+
 		gameWindow.display();
 	}
 }
