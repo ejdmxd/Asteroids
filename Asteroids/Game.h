@@ -14,9 +14,11 @@ class Game
 	float* m_playersHealth;
 	sf::Text m_textState;
 	sf::Font alegreyaSans;
+	EntityManager* m_entityManager;
 public:
 	Game();
 	void startGame();
+	void reset();
 	GameState getGameState() { return m_gameState;  }
 };
 

@@ -96,12 +96,16 @@ void EntityManager::setMeteorDirection(Meteor* meteor) {
     }
 }
 
-EntityManager::~EntityManager() {
-    // Destructor to clean up memory allocated for entities.
+void EntityManager::clear() {
     if (!m_allEntities.empty()) {
         for (auto it = m_allEntities.begin(); it != m_allEntities.end(); ++it) {
             delete* it;
         }
         m_allEntities.clear();
     }
+}
+
+EntityManager::~EntityManager() {
+    // Destructor to clean up memory allocated for entities.
+    clear();
 }

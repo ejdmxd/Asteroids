@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{D3E7575D-F99A-4089-819B-EC42592EE220}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D3E7575D-F99A-4089-819B-EC42592EE220}|Asteroids\\Asteroids.vcxproj|C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\EntityManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3E7575D-F99A-4089-819B-EC42592EE220}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\EntityManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D3E7575D-F99A-4089-819B-EC42592EE220}|Asteroids\\Asteroids.vcxproj|C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\EntityManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D3E7575D-F99A-4089-819B-EC42592EE220}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\EntityManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -26,8 +30,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EntityManager.h",
+              "DocumentMoniker": "C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\EntityManager.h",
+              "RelativeDocumentMoniker": "Asteroids\\EntityManager.h",
+              "ToolTip": "C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\EntityManager.h",
+              "RelativeToolTip": "Asteroids\\EntityManager.h",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAlwB0AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-25T11:35:02.604Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -36,7 +53,7 @@
               "RelativeDocumentMoniker": "Asteroids\\Game.h",
               "ToolTip": "C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\Game.h",
               "RelativeToolTip": "Asteroids\\Game.h",
-              "ViewState": "AQIAAAMAAAAAAAAAAADwvwYAAAAaAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAlwBQAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-24T22:46:23.693Z",
               "EditorCaption": ""
@@ -49,27 +66,27 @@
               "RelativeDocumentMoniker": "Asteroids\\Game.cpp",
               "ToolTip": "C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\Game.cpp",
               "RelativeToolTip": "Asteroids\\Game.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-24T22:42:58.736Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EntityManager.cpp",
               "DocumentMoniker": "C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\EntityManager.cpp",
               "RelativeDocumentMoniker": "Asteroids\\EntityManager.cpp",
               "ToolTip": "C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\EntityManager.cpp",
               "RelativeToolTip": "Asteroids\\EntityManager.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABWAAAA",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAG0AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-24T22:41:26.919Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GameState.h",
               "DocumentMoniker": "C:\\Users\\adik1\\C\u002B\u002B\\SFML\\Asteroids\\Asteroids\\GameState.h",
               "RelativeDocumentMoniker": "Asteroids\\GameState.h",

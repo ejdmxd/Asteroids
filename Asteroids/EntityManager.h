@@ -27,6 +27,8 @@ public:
 
 	void setMeteorDirection(Meteor* meteor);
 
+	void clear();
+
 	// Applies the given function to each entity in the provided vector.
 	template <class T>
 	void applyOn(std::function<void(T*)> func, std::vector<T*> entities) {
