@@ -2,9 +2,8 @@
 
 #include <iostream>
 #include "Background.h"
-#include "Interaction.h"
-#include "HealthBar.h"
 #include "EntityManager.h"
+#include "GameState.h"
 #include <SFML/Graphics.hpp>
 
 

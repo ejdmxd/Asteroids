@@ -9,7 +9,7 @@ class Entity
 {
 protected:
 	sf::Sprite m_sprite;
-	bool m_destoyed;
+	bool m_destoyed = false;
 public:
 	virtual void update() = 0;
 	virtual void draw(sf::RenderWindow& window) = 0;
