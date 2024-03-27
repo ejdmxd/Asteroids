@@ -14,5 +14,6 @@ public:
 	virtual void loseHealth() = 0;
 	void setHealth(float health) { m_health = health; }
 	float* getHealth() { return &m_health; }
+	sf::Vector2f getVelocity() { return m_velocity;  }
 };
 

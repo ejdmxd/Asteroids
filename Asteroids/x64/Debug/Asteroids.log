@@ -1,29 +1,5 @@
-﻿  Background.cpp
-  Entity.cpp
-  EntityManager.cpp
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.cpp(52,31): warning C4244: inicializování: float se převádí na int; může dojít ke ztrátě dat.
-  Game.cpp
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(53,36): warning C4244: argument: _Ty se převádí na float; může dojít ke ztrátě dat.
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(53,36): warning C4244:         with
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(53,36): warning C4244:         [
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(53,36): warning C4244:             _Ty=int
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(53,36): warning C4244:         ]
-  (kompilování zdrojového souboru Game.cpp)
-  C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(53,36):
-  kontext vytváření instancí šablony (první nejstarší) je
-  	C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Game.cpp(53,71):
-  	Zobrazit odkaz na kompilované vytváření instancí funkce šablona T *EntityManager::create<Player,int,int>(int &&,int &&)
-          with
-          [
-              T=Player
-          ]
-  
-  HealthBar.cpp
-  Interaction.cpp
-  Item.cpp
-  main.cpp
-  Meteor.cpp
+﻿  EntityManager.cpp
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.cpp(53,31): warning C4244: inicializování: float se převádí na int; může dojít ke ztrátě dat.
   Movement.cpp
-  Player.cpp
   Generování kódu...
   Asteroids.vcxproj -> C:\Users\adik1\C++\SFML\Asteroids\x64\Debug\Asteroids.exe

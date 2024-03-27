@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "HealthBar.h"
 #include "Interaction.h"
+#include "Bullet.h"
 #include <thread>
 #include <mutex>
 #include <functional>
@@ -54,6 +55,8 @@ public:
 		m_allEntities.push_back(ptr);
 		return ptr;
 	}
+
+	void shoot();
 
 	~EntityManager();
 };

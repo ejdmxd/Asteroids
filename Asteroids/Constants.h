@@ -15,4 +15,5 @@ struct Constants {
 	static constexpr float playersSlowestSpeed{ 0.5f };
 	static constexpr float slowRatio{ 0.95f };
 	static constexpr float playerRotationSpeed{ 3.0f };
+	static constexpr float bulletSpeed { 1.0f };
 };

@@ -21,6 +21,7 @@ void EntityManager::draw(sf::RenderWindow& window)
 void EntityManager::update()
 {
     if (!m_allEntities.empty()) {
+        shoot();
         applyOn<Entity>([](Entity* entity) {
             entity->update();
             }, m_allEntities);
@@ -30,11 +31,11 @@ void EntityManager::update()
 void EntityManager::interaction() {
     // Handle interactions between players and meteors
     if (!m_allEntities.empty()) {
-        auto players = selectGroup<Player>();
+        auto player = selectGroup<Player>();
         auto meteors = selectGroup<Meteor>();
-        if(!players.empty() && !meteors.empty()){
-            applyOn<Meteor>([&players](Meteor* meteor) {
-            for (Player* player : players) {
+        if(!player.empty() && !meteors.empty()){
+            applyOn<Meteor>([&player](Meteor* meteor) {
+            for (Player* player : player) {
                 handleCollision(*player, *meteor);
             }
             }, meteors);
@@ -102,6 +103,17 @@ void EntityManager::clear() {
             delete* it;
         }
         m_allEntities.clear();
+    }
+}
+
+void EntityManager::shoot()
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
+        auto player = selectGroup<Player>();
+        if (!player.empty()) {
+            Player* nevim = player.at(0);
+            create<Bullet>(nevim);
+        }
     }
 }
 

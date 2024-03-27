@@ -18,3 +18,8 @@ void handleCollision(Player& p, Meteor& m) {
 void handleCollision(const Player& p, const Item& i) {
 	//TODO
 }
+
+void handleCollision(const Meteor& m, const Bullet& b)
+{
+
+}

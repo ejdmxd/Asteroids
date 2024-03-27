@@ -37,3 +37,17 @@ float generateDirection(int val1, int val2) {
 	std::uniform_int_distribution<> dis(val1, val2);
 	return float(dis(rd));
 }
+
+sf::Vector2f normalize(sf::Vector2f vector) {
+	float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
+	sf::Vector2f normalizedVelocity;
+	if (length != 0) {
+		normalizedVelocity.x = vector.x / length;
+		normalizedVelocity.y = vector.y / length;
+	}
+	else {
+		normalizedVelocity.x = 0;
+		normalizedVelocity.y = 0;
+	}
+	return normalizedVelocity;
+}
