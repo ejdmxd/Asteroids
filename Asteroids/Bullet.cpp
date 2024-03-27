@@ -5,10 +5,11 @@ sf::Texture Bullet::m_texture;
 Bullet::Bullet(MovingEntity* entity) {
 	m_texture.loadFromFile("bullet.png");
 	m_sprite.setTexture(m_texture);
-	m_velocity = normalize(entity->getVelocity()) * Constants::bulletSpeed;
+	m_sprite.setRotation(entity->getRotation());
+	m_velocity = sf::Vector2f(getXDirection(Constants::bulletSpeed, entity->getRotation()), getYDirection(Constants::bulletSpeed, entity->getRotation()));
 	m_sprite.setPosition(entity->x(), entity->y());
 	m_sprite.setOrigin(getCentre());
-
+	m_sprite.setScale(sf::Vector2f(0.5f, 0.5f));
 }
 
 void Bullet::moveUp()

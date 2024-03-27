@@ -6,7 +6,6 @@ class Player : public MovingEntity
 {
 private:
 	static sf::Texture m_texture;
-	float m_rotation;
 	/*
 	void moveHorizontally();
 	void moveVertically();

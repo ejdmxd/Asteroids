@@ -4,7 +4,7 @@ Game::Game() {
 	alegreyaSans.loadFromFile("AlegreyaSansSC-ExtraBold.ttf");
 	m_textState.setFont(alegreyaSans);
 	m_textState.setString("");
-	m_textState.setPosition(Constants::windowWidth / 2.0f, Constants::windowHeight / 2.0f);
+	m_textState.setPosition(Constants::windowWidth / 2.0f - 100.f, Constants::windowHeight / 2.0f);
 	m_textState.setCharacterSize(32);
 	m_textState.setFillColor(sf::Color::White);
 
