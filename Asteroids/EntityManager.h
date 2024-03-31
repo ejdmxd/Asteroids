@@ -15,6 +15,7 @@ class EntityManager
 {
 	std::mutex m_mutex;
 	bool m_isAdding = false;
+	bool m_isShooting = false;
 
 	// Vector containing all entities.
 	std::vector<Entity*> m_allEntities;

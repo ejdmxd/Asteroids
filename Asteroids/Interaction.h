@@ -8,6 +8,6 @@
 bool isInteracting(const Entity& e1, const Entity& e2);
 void handleCollision(Player& p, Meteor& m);
 void handleCollision(const Player& p, const Item& i);
-void handleCollision(const Meteor& m, const Bullet& b);
+void handleCollision(Meteor& m, Bullet& b);
 
 

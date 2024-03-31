@@ -19,7 +19,10 @@ void handleCollision(const Player& p, const Item& i) {
 	//TODO
 }
 
-void handleCollision(const Meteor& m, const Bullet& b)
+void handleCollision(Meteor& m, Bullet& b)
 {
-
+	if (isInteracting(m, b)) {
+		m.destroy();
+		b.destroy();
+	}
 }

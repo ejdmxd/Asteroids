@@ -40,6 +40,16 @@ void EntityManager::interaction() {
             }
             }, meteors);
         }
+        if (!meteors.empty()) {
+            auto bullets = selectGroup<Bullet>();
+            if (!bullets.empty()) {
+                applyOn<Bullet>([&meteors](Bullet* bullet) {
+                    for (Meteor* meteor : meteors) {
+                        handleCollision(*meteor, *bullet);
+                    }
+                    }, bullets);
+            }
+        }
     }
 }
 
@@ -109,11 +119,18 @@ void EntityManager::clear() {
 void EntityManager::shoot()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
-        auto player = selectGroup<Player>();
-        if (!player.empty()) {
-            Player* nevim = player.at(0);
-            create<Bullet>(nevim);
+        if (!m_isShooting) {
+            m_isShooting = true;
+
+           auto player = selectGroup<Player>();
+            if (!player.empty()) {
+                Player* nevim = player.at(0);
+                create<Bullet>(nevim);
+            }
         }
+    }
+    else {
+        m_isShooting = false;
     }
 }
 
