@@ -5,6 +5,10 @@
 #include "Movement.h"
 #include "Constants.h"
 
+// The Entity class serves as a base class for all game entities.
+// It provides common functionality and attributes shared by all entities.
+// By utilizing object-oriented programming (OOP), each object in the game
+// is represented as an entity, allowing for easier management and manipulation.
 class Entity
 {
 protected:

@@ -118,6 +118,7 @@ void Player::draw(sf::RenderWindow& window) {
 	window.draw(m_sprite);
 }
 
+//Player loses health if he is not destroyed
 void Player::loseHealth() {
 	if (*getHealth() > 0) {
 		setHealth(*getHealth() - 100);

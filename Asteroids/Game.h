@@ -6,7 +6,8 @@
 #include "GameState.h"
 #include <SFML/Graphics.hpp>
 
-
+// The Game class manages the overall game state and runs the main game loop.
+// It controls the flow of the game and handles initialization, updating, and rendering of game entities.
 class Game
 {
 	GameState m_gameState{ GameState::Playing };

@@ -19,10 +19,12 @@ void handleCollision(const Player& p, const Item& i) {
 	//TODO
 }
 
+//If bullet colides with meteors both of them are destroyed
 void handleCollision(Meteor& m, Bullet& b)
 {
 	if (isInteracting(m, b)) {
 		m.destroy();
 		b.destroy();
+
 	}
 }

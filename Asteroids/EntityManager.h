@@ -10,7 +10,9 @@
 #include <functional>
 
 
-// EntityManager class manages entities in the game world.
+// The EntityManager class managesall  entities in the game world.
+// It provides functionality to create, update, and interact with entities,
+// as well as spawning new entities and handling entity interactions.
 class EntityManager
 {
 	std::mutex m_mutex;
@@ -25,6 +27,8 @@ public:
 	void draw(sf::RenderWindow& window);
 	void update();
 	void interaction();
+	void meteorPlayerInteraction(std::vector<Player*>& player, std::vector<Meteor*>& meteors);
+	void bulletMeteorInteraction(std::vector<Meteor*>& meteors);
 	void startSpawning();
 
 	void setMeteorDirection(Meteor* meteor);

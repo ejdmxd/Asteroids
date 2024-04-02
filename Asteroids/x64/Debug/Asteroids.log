@@ -1,13 +1,16 @@
-﻿  EntityManager.cpp
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.cpp(63,31): warning C4244: inicializování: float se převádí na int; může dojít ke ztrátě dat.
+﻿  Background.cpp
+  Bullet.cpp
+  Entity.cpp
+  EntityManager.cpp
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.cpp(95,31): warning C4244: inicializování: float se převádí na int; může dojít ke ztrátě dat.
   Game.cpp
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(55,36): warning C4244: argument: _Ty se převádí na float; může dojít ke ztrátě dat.
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(55,36): warning C4244:         with
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(55,36): warning C4244:         [
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(55,36): warning C4244:             _Ty=int
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(55,36): warning C4244:         ]
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(57,36): warning C4244: argument: _Ty se převádí na float; může dojít ke ztrátě dat.
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(57,36): warning C4244:         with
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(57,36): warning C4244:         [
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(57,36): warning C4244:             _Ty=int
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(57,36): warning C4244:         ]
   (kompilování zdrojového souboru Game.cpp)
-  C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(55,36):
+  C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(57,36):
   kontext vytváření instancí šablony (první nejstarší) je
   	C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Game.cpp(53,71):
   	Zobrazit odkaz na kompilované vytváření instancí funkce šablona T *EntityManager::create<Player,int,int>(int &&,int &&)
@@ -16,7 +19,12 @@ C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(55,36): warning C424
               T=Player
           ]
   
+  HealthBar.cpp
   Interaction.cpp
+  Item.cpp
+  Meteor.cpp
+  Movement.cpp
+  Player.cpp
   main.cpp
   Generování kódu...
   Asteroids.vcxproj -> C:\Users\adik1\C++\SFML\Asteroids\x64\Debug\Asteroids.exe

@@ -2,6 +2,8 @@
 
 #include "MovingEntity.h"
 
+// The Player class represents the player-controlled entity in the game.
+// The player interacts with meteors and has the ability to shoot, facilitated by the EntityManager class.
 class Player : public MovingEntity
 {
 private:

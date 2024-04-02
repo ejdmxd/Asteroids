@@ -1,6 +1,7 @@
 #pragma once
 #include "MovingEntity.h"
 
+// Meteors interact with the player and bullets, and there are plans to implement health for meteors.
 class Meteor : public MovingEntity
 {
 private:

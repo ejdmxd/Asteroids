@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 
+// The Background class represents a background entity in the game.
 class Background : public Entity
 {
 	static sf::Texture m_texture;
