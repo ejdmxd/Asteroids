@@ -32,6 +32,7 @@ public:
 	void startSpawning();
 
 	void setMeteorDirection(Meteor* meteor);
+	void splitMeteor(Meteor* meteor);
 
 	void clear();
 

@@ -120,10 +120,10 @@ void Player::draw(sf::RenderWindow& window) {
 
 //Player loses health if he is not destroyed
 void Player::loseHealth() {
-	if (*getHealth() > 0) {
-		setHealth(*getHealth() - 100);
+	if (*getHealthPointer() > 0) {
+		setHealth(*getHealthPointer() - 100);
 	}
-	else if (*getHealth() == 0) {
+	else if (*getHealthPointer() == 0) {
 		m_destoyed = true;
 	}
 }

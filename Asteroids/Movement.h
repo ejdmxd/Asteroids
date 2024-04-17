@@ -6,6 +6,7 @@
 
 class Entity;
 
+//TODO one function for velocity
 float getXDirection(float speed, float rotationAngle);
 float getYDirection(float speed, float rotationAngle);
 bool checkWindowWidth(float velocity, Entity& e);

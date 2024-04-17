@@ -82,9 +82,12 @@ void EntityManager::bulletMeteorInteraction(std::vector<Meteor*>& meteors)
     // Handle collisions between bullets and meteors
     auto bullets = selectGroup<Bullet>();
     if (!bullets.empty()) {
-        applyOn<Bullet>([&meteors](Bullet* bullet) {
+        applyOn<Bullet>([&meteors, this](Bullet* bullet) {
             for (Meteor* meteor : meteors) {
                 handleCollision(*meteor, *bullet);
+                if (meteor->isDestroyed()&& meteor->getHealth()>1) {
+                    splitMeteor(meteor);
+                }
             }
             }, bullets);
     }
@@ -133,18 +136,25 @@ void EntityManager::startSpawning() {
 
 void EntityManager::setMeteorDirection(Meteor* meteor) {
     // Set the direction of the meteor based on its initial position
-    if (meteor->x() < Constants::meteorWidth / 2) {
+    if (meteor->x() < Constants::windowWidth / 2) {
         meteor->moveRight();
     }
     else {
         meteor->moveLeft();
     }
-    if (meteor->y() < Constants::meteorHeight / 2) {
+    if (meteor->y() < Constants::windowHeight / 2) {
         meteor->moveDown();
     }
     else {
         meteor->moveUp();
     }
+}
+
+void EntityManager::splitMeteor(Meteor* meteor)
+{
+    sf::Vector2f velocity = meteor->getVelocity();
+    setMeteorDirection(create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity));
+    setMeteorDirection(create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity));
 }
 
 void EntityManager::clear() {

@@ -1,7 +1,7 @@
 #include "HealthBar.h"
 
 HealthBar::HealthBar(Player& player) {
-	m_playersHealth = player.getHealth();
+	m_playersHealth = player.getHealthPointer();
 	hpBar.setFillColor(sf::Color(255, 0, 0, 128));
 	hpBar.setSize(sf::Vector2f((float)Constants::playersHealth * 0.5f, 100.f));
 	hpBar.setPosition(250.f, 50.f);

@@ -25,6 +25,5 @@ void handleCollision(Meteor& m, Bullet& b)
 	if (isInteracting(m, b)) {
 		m.destroy();
 		b.destroy();
-
 	}
 }

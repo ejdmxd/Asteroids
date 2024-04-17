@@ -2,8 +2,9 @@
 
 sf::Texture Meteor::m_texture;
 
-Meteor::Meteor(float x, float y, int strength, float speed) {
+Meteor::Meteor(float x, float y, int health, sf::Vector2f velocity) {
 	// Load the texture for the meteor from file
+	setHealth(health);
 	m_texture.loadFromFile("meteor.png");
 	// Set the texture for the meteor sprite
 	// Set its position to the specified (x, y) coordinates
@@ -12,19 +13,19 @@ Meteor::Meteor(float x, float y, int strength, float speed) {
 	m_sprite.setTexture(m_texture);
 	m_sprite.setPosition(x, y);
 	m_sprite.setOrigin(getCentre());
-	m_sprite.setScale(sf::Vector2f(0.3f, 0.3f));
+	if (health == 2) {
+		m_sprite.setScale(sf::Vector2f(0.3f, 0.3f));
+	}
+	else {
+		m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
+	}
 	// Set the velocity of the meteor to the specified speed
-	m_velocity = { 0.0f, 0.0f };
+	m_velocity = velocity;
 	m_destoyed = false;
 }
 
-Meteor::Meteor(float x, float y, float speed) : Meteor(x, y, 1, speed) {
-	// This constructor initializes a meteor at the specified position (x, y) with the given speed.
-	// TODO: In the future, smaller meteors with varying attributes may spawn from this meteor.
-	// The contructor is prepared for future development.
-}
 
-Meteor::Meteor(float x, float y) : Meteor(x, y, 1) {
+Meteor::Meteor(float x, float y) : Meteor(x, y, 2, {0.f,0.f}) {
 	// The contructor is prepared for future development.
 }
 
