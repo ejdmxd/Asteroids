@@ -84,8 +84,9 @@ void EntityManager::bulletMeteorInteraction(std::vector<Meteor*>& meteors)
     if (!bullets.empty()) {
         applyOn<Bullet>([&meteors, this](Bullet* bullet) {
             for (Meteor* meteor : meteors) {
+                bool didValueChanged = meteor->isDestroyed();
                 handleCollision(*meteor, *bullet);
-                if (meteor->isDestroyed()&& meteor->getHealth()>1) {
+                if (didValueChanged != meteor->isDestroyed() && meteor->getHealth() > 1) {
                     splitMeteor(meteor);
                 }
             }
@@ -148,13 +149,22 @@ void EntityManager::setMeteorDirection(Meteor* meteor) {
     else {
         meteor->moveUp();
     }
+    meteor->setRotation();
 }
 
 void EntityManager::splitMeteor(Meteor* meteor)
 {
     sf::Vector2f velocity = meteor->getVelocity();
+    velocity = { getXDirection(meteor->getSpeed(), meteor->getRotation() + 20.f), getYDirection(meteor->getSpeed(), meteor->getRotation() + 20.f)};
+    create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity);
+    velocity = meteor->getVelocity();
+    velocity = { getXDirection(meteor->getSpeed(), meteor->getRotation() - 10.f), getYDirection(meteor->getSpeed(), meteor->getRotation() - 10.f)};
+    create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity);
+
+    /*
     setMeteorDirection(create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity));
     setMeteorDirection(create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity));
+    */
 }
 
 void EntityManager::clear() {

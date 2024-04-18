@@ -6,6 +6,7 @@ class Meteor : public MovingEntity
 {
 private:
 	static sf::Texture m_texture;
+	float m_speed;
 public:
 	Meteor(float x, float y, int health, sf::Vector2f velocity);
 	Meteor(float x, float y);
@@ -16,5 +17,7 @@ public:
 	void loseHealth() override;
 	void update() override;
 	void draw(sf::RenderWindow& window) override;
+	void setRotation();
+	float getSpeed() { return m_speed; }
 };
 

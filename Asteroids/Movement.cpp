@@ -36,6 +36,7 @@ float generateDirection(int val1, int val2) {
 	return float(dis(rd));
 }
 
+
 /*
 sf::Vector2f normalize(sf::Vector2f vector) {
 	float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);

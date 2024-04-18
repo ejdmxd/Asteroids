@@ -1,18 +1,3 @@
-﻿  EntityManager.cpp
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.cpp(105,31): warning C4244: inicializování: float se převádí na int; může dojít ke ztrátě dat.
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(60,36): warning C4244: argument: _Ty se převádí na int; může dojít ke ztrátě dat.
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(60,36): warning C4244:         with
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(60,36): warning C4244:         [
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(60,36): warning C4244:             _Ty=float
-C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(60,36): warning C4244:         ]
-  (kompilování zdrojového souboru EntityManager.cpp)
-  C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.h(60,36):
-  kontext vytváření instancí šablony (první nejstarší) je
-  	C:\Users\adik1\C++\SFML\Asteroids\Asteroids\EntityManager.cpp(156,24):
-  	Zobrazit odkaz na kompilované vytváření instancí funkce šablona T *EntityManager::create<Meteor,float,float,float,sf::Vector2f&>(float &&,float &&,float &&,sf::Vector2f &)
-          with
-          [
-              T=Meteor
-          ]
-  
+﻿  Meteor.cpp
+C:\Users\adik1\C++\SFML\Asteroids\Asteroids\Meteor.cpp(7,12): warning C4244: argument: int se převádí na float; může dojít ke ztrátě dat.
   Asteroids.vcxproj -> C:\Users\adik1\C++\SFML\Asteroids\x64\Debug\Asteroids.exe

@@ -22,6 +22,7 @@ Meteor::Meteor(float x, float y, int health, sf::Vector2f velocity) {
 	// Set the velocity of the meteor to the specified speed
 	m_velocity = velocity;
 	m_destoyed = false;
+	m_speed = generateDirection(1, 3);
 }
 
 
@@ -32,20 +33,22 @@ Meteor::Meteor(float x, float y) : Meteor(x, y, 2, {0.f,0.f}) {
 
 //Each meteor will have slithly different angle of its trail
 void Meteor::moveUp() {
-	m_velocity.y = -1.0f * generateDirection(1, 3);
+	m_velocity.y = -1.0f * m_speed;
 }
 
 void Meteor::moveDown() {
-	m_velocity.y = 1.0f * generateDirection(1, 3);
+	m_velocity.y = 1.0f * m_speed;
 }
 
 void Meteor::moveLeft() {
-	m_velocity.x = -1.0f * generateDirection(1, 3);
+	m_velocity.x = -1.0f * m_speed;
 }
 
 void Meteor::moveRight() {
-	m_velocity.x = 1.0f * generateDirection(1, 3);
+	m_velocity.x = 1.0f * m_speed;
 }
+
+
 
 void Meteor::loseHealth() {/*TODO*/ }
 
@@ -64,3 +67,7 @@ void Meteor::draw(sf::RenderWindow& window) {
 	window.draw(m_sprite);
 }
 
+void Meteor::setRotation() {
+	m_sprite.setRotation(std::atan2(m_velocity.y, m_velocity.x) * 180.f / Constants::PI);
+	std::cout << m_rotation;
+}
