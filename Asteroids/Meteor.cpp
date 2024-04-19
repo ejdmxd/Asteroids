@@ -22,7 +22,6 @@ Meteor::Meteor(float x, float y, int health, sf::Vector2f velocity) {
 	// Set the velocity of the meteor to the specified speed
 	m_velocity = velocity;
 	m_destoyed = false;
-	m_speed = generateDirection(1, 3);
 }
 
 
@@ -31,21 +30,56 @@ Meteor::Meteor(float x, float y) : Meteor(x, y, 2, {0.f,0.f}) {
 }
 
 
+
+//TODO - center directions, randomize speed
 //Each meteor will have slithly different angle of its trail
 void Meteor::moveUp() {
-	m_velocity.y = -1.0f * m_speed;
+	if (x() < Constants::windowWidth/2.f) {
+		m_rotation = generateDirection(45, 90);
+	}
+	else {
+		m_rotation = generateDirection(90, 135);
+	}
+	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
+	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
+	setRotation(m_rotation);
 }
 
 void Meteor::moveDown() {
-	m_velocity.y = 1.0f * m_speed;
+	if (x() < Constants::windowWidth/2.f) {
+		m_rotation = -generateDirection(45, 90);
+	}
+	else {
+		m_rotation = -generateDirection(90, 135);
+	}
+	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
+	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
+	setRotation(m_rotation);
 }
 
 void Meteor::moveLeft() {
-	m_velocity.x = -1.0f * m_speed;
+	if (y() < Constants::windowHeight / 2.f) {
+		m_rotation = -generateDirection(180, 225);
+	}
+	else {
+		m_rotation = -generateDirection(135, 180);
+	}
+	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
+	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
+	std::cout << m_rotation << std::endl;
+	setRotation(m_rotation);
 }
 
 void Meteor::moveRight() {
-	m_velocity.x = 1.0f * m_speed;
+	if (y() < Constants::windowHeight / 2.f) {
+		m_rotation = -generateDirection(1, 45);
+	}
+	else {
+		m_rotation = generateDirection(1, 45);
+	}
+	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
+	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
+	setRotation(m_rotation);
 }
 
 
@@ -67,7 +101,6 @@ void Meteor::draw(sf::RenderWindow& window) {
 	window.draw(m_sprite);
 }
 
-void Meteor::setRotation() {
-	m_sprite.setRotation(std::atan2(m_velocity.y, m_velocity.x) * 180.f / Constants::PI);
-	std::cout << m_rotation;
+void Meteor::setRotation(float rotation) {
+	m_sprite.setRotation(rotation);
 }

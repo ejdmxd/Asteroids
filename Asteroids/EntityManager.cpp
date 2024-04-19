@@ -124,8 +124,8 @@ void EntityManager::startSpawning() {
                     break;
                 }
                 std::lock_guard<std::mutex> guard(m_mutex);
-                Meteor* meteor = create<Meteor>(x, y);
-                setMeteorDirection(meteor);
+                setMeteorDirection(create<Meteor>(x, y));
+                create<Meteor>(100, 100, 1,velocity);
             }
             m_isAdding = false;
             };
@@ -136,29 +136,30 @@ void EntityManager::startSpawning() {
 }
 
 void EntityManager::setMeteorDirection(Meteor* meteor) {
-    // Set the direction of the meteor based on its initial position
-    if (meteor->x() < Constants::windowWidth / 2) {
+    // Set the direction of the asteroid based on its initial position
+    if (meteor->x() == 0) {
         meteor->moveRight();
     }
-    else {
-        meteor->moveLeft();
-    }
-    if (meteor->y() < Constants::windowHeight / 2) {
-        meteor->moveDown();
-    }
-    else {
+    else if (meteor->y() == 0)
+    {
         meteor->moveUp();
     }
-    meteor->setRotation();
+    else if (meteor->y() == Constants::windowHeight)
+    {
+        meteor->moveDown();
+    }
+    else if (meteor->x() == Constants::windowWidth)
+    {
+        meteor->moveLeft();
+    }
 }
 
 void EntityManager::splitMeteor(Meteor* meteor)
 {
     sf::Vector2f velocity = meteor->getVelocity();
-    velocity = { getXDirection(meteor->getSpeed(), meteor->getRotation() + 20.f), getYDirection(meteor->getSpeed(), meteor->getRotation() + 20.f)};
-    create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity);
-    velocity = meteor->getVelocity();
-    velocity = { getXDirection(meteor->getSpeed(), meteor->getRotation() - 10.f), getYDirection(meteor->getSpeed(), meteor->getRotation() - 10.f)};
+    velocity = { getXDirection(Constants::meteorSpeed, meteor->getRotation()+20), getYDirection(Constants::meteorSpeed, meteor->getRotation()+20) };
+    create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity); velocity = meteor->getVelocity();
+    velocity = { getXDirection(Constants::meteorSpeed, meteor->getRotation() - 20), getYDirection(Constants::meteorSpeed, meteor->getRotation() - 20) };
     create<Meteor>(meteor->x(), meteor->y(), meteor->getHealth() - 1, velocity);
 
     /*
