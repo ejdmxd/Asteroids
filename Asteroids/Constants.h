@@ -5,7 +5,7 @@
 struct Constants {
 	static constexpr int windowWidth{ 1000 };
 	static constexpr int windowHeight{ 800 };
-	static constexpr float meteorSpeed{ 6.0f };
+	static constexpr float meteorSpeed{ 3.0f };
 	static constexpr float playerWidth{ 60.0f };
 	static constexpr float playerSpeed{ 3.5f };
 	static constexpr float meteorWidth{ 25.0f };

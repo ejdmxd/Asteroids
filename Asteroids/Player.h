@@ -20,6 +20,7 @@ public:
 	void moveDown() override;
 	void moveLeft() override;
 	void moveRight() override;
+	void calculateVector() override;
 	void update() override;
 	bool canPlayerSlow(const float velocity, const float position, const float screenLimit);
 	bool isAtSlowestSpeed(const float velocity);

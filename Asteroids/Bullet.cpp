@@ -14,8 +14,8 @@ Bullet::Bullet(MovingEntity* entity) {
 	// Set the origin of the bullet sprite to its center
 	// Scale the bullet sprite to 50% of its original size
 	m_sprite.setTexture(m_texture);
-	m_sprite.setRotation(entity->getRotation());
-	m_velocity = sf::Vector2f(getXDirection(Constants::bulletSpeed, entity->getRotation()), getYDirection(Constants::bulletSpeed, entity->getRotation()));
+	setRotation(entity->getRotation());
+	calculateVector();
 	m_sprite.setPosition(entity->x(), entity->y());
 	m_sprite.setOrigin(getCentre());
 	m_sprite.setScale(sf::Vector2f(0.5f, 0.5f));
@@ -39,6 +39,12 @@ void Bullet::moveRight()
 
 void Bullet::loseHealth()
 {
+}
+
+void Bullet::calculateVector()
+{
+	m_velocity.x = getXDirection(Constants::bulletSpeed, m_rotation);
+	m_velocity.y = getYDirection(Constants::bulletSpeed, m_rotation);
 }
 
 void Bullet::update()

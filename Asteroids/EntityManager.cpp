@@ -125,7 +125,6 @@ void EntityManager::startSpawning() {
                 }
                 std::lock_guard<std::mutex> guard(m_mutex);
                 setMeteorDirection(create<Meteor>(x, y));
-                create<Meteor>(100, 100, 1,velocity);
             }
             m_isAdding = false;
             };

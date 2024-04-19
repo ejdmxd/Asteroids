@@ -2,7 +2,7 @@
 
 sf::Texture Meteor::m_texture;
 
-Meteor::Meteor(float x, float y, int health, sf::Vector2f velocity) {
+Meteor::Meteor(float x, float y, float health, sf::Vector2f velocity) {
 	// Load the texture for the meteor from file
 	setHealth(health);
 	m_texture.loadFromFile("meteor.png");
@@ -34,54 +34,49 @@ Meteor::Meteor(float x, float y) : Meteor(x, y, 2, {0.f,0.f}) {
 //TODO - center directions, randomize speed
 //Each meteor will have slithly different angle of its trail
 void Meteor::moveUp() {
-	if (x() < Constants::windowWidth/2.f) {
-		m_rotation = generateDirection(45, 90);
-	}
-	else {
-		m_rotation = generateDirection(90, 135);
-	}
-	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
-	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
-	setRotation(m_rotation);
+	m_rotation = setRotationHorizontally(45, 45);
+	calculateVector();
 }
 
 void Meteor::moveDown() {
-	if (x() < Constants::windowWidth/2.f) {
-		m_rotation = -generateDirection(45, 90);
-	}
-	else {
-		m_rotation = -generateDirection(90, 135);
-	}
-	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
-	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
-	setRotation(m_rotation);
+	m_rotation = -setRotationHorizontally(45, 45);
+	calculateVector();
 }
 
 void Meteor::moveLeft() {
-	if (y() < Constants::windowHeight / 2.f) {
-		m_rotation = -generateDirection(180, 225);
-	}
-	else {
-		m_rotation = -generateDirection(135, 180);
-	}
-	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
-	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
-	std::cout << m_rotation << std::endl;
-	setRotation(m_rotation);
+	m_rotation = setRotationVertically(135, 45);
+	calculateVector();
 }
 
 void Meteor::moveRight() {
-	if (y() < Constants::windowHeight / 2.f) {
-		m_rotation = -generateDirection(1, 45);
-	}
-	else {
-		m_rotation = generateDirection(1, 45);
-	}
-	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
-	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
-	setRotation(m_rotation);
+	m_rotation = setRotationVertically(1, 45);
+	calculateVector();
 }
 
+float Meteor::setRotationHorizontally(int originalRotation, int deviation) {
+	if (x() < Constants::windowWidth / 2.f) {
+		return generateDirection(originalRotation, originalRotation +deviation);
+	}
+	else {
+		return generateDirection(originalRotation + deviation, originalRotation + deviation*2);
+	}
+}
+
+float Meteor::setRotationVertically(int originRotation, int deviation) {
+	if (y() > Constants::windowHeight / 2.f) {
+		return generateDirection(originRotation+deviation, originRotation+deviation*2);
+	}
+	else {
+		return generateDirection(originRotation, originRotation+deviation);
+	}
+}
+
+void Meteor::calculateVector()
+{
+	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
+	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
+	setRotation(m_rotation);
+}
 
 
 void Meteor::loseHealth() {/*TODO*/ }
@@ -101,6 +96,3 @@ void Meteor::draw(sf::RenderWindow& window) {
 	window.draw(m_sprite);
 }
 
-void Meteor::setRotation(float rotation) {
-	m_sprite.setRotation(rotation);
-}

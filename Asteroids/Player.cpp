@@ -60,6 +60,10 @@ void Player::moveRight() {
 	m_rotation += Constants::playerRotationSpeed;
 }
 
+void Player::calculateVector()
+{
+}
+
 // Updates player's rotation, position, and movement based on input
 void Player::update() {
 	processPlayerInput();

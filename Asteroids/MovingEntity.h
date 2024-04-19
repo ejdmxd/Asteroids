@@ -13,10 +13,12 @@ public:
 	virtual void moveLeft() = 0;
 	virtual void moveRight() = 0;
 	virtual void loseHealth() = 0;
+	virtual void calculateVector() = 0;
 	void setHealth(float health) { m_health = health; }
 	float getHealth() { return m_health; }
 	float* getHealthPointer() { return &m_health; }
 	sf::Vector2f getVelocity() { return m_velocity;  }
 	float getRotation() { return m_rotation; }
+	void setRotation(float rotation) { m_rotation = rotation; m_sprite.setRotation(m_rotation); }
 };
 
