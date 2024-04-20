@@ -103,23 +103,23 @@ void EntityManager::startSpawning() {
             // Add a meteor after a delay
             std::this_thread::sleep_for(std::chrono::seconds(1));
             {
-                int direction = generateDirection(1, 4);
+                int direction = generatNumber(1, 4);
                 float x, y;
                 switch (direction) {
                 case 1:
                     x = 0;
-                    y = generateDirection(0, Constants::windowHeight);
+                    y = generatNumber(0, Constants::windowHeight);
                     break;
                 case 2:
-                    x = generateDirection(0, Constants::windowWidth);
+                    x = generatNumber(0, Constants::windowWidth);
                     y = 0;
                     break;
                 case 3: 
                     x = Constants::windowWidth;
-                    y = generateDirection(0, Constants::windowHeight);
+                    y = generatNumber(0, Constants::windowHeight);
                     break;
                 default: 
-                    x = generateDirection(0, Constants::windowWidth);
+                    x = generatNumber(0, Constants::windowWidth);
                     y = Constants::windowHeight;
                     break;
                 }

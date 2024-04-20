@@ -55,26 +55,27 @@ void Meteor::moveRight() {
 
 float Meteor::setRotationHorizontally(int originalRotation, int deviation) {
 	if (x() < Constants::windowWidth / 2.f) {
-		return generateDirection(originalRotation, originalRotation +deviation);
+		return generatNumber(originalRotation, originalRotation +deviation);
 	}
 	else {
-		return generateDirection(originalRotation + deviation, originalRotation + deviation*2);
+		return generatNumber(originalRotation + deviation, originalRotation + deviation*2);
 	}
 }
 
 float Meteor::setRotationVertically(int originRotation, int deviation) {
 	if (y() > Constants::windowHeight / 2.f) {
-		return generateDirection(originRotation+deviation, originRotation+deviation*2);
+		return generatNumber(originRotation+deviation, originRotation+deviation*2);
 	}
 	else {
-		return generateDirection(originRotation, originRotation+deviation);
+		return generatNumber(originRotation, originRotation+deviation);
 	}
 }
 
 void Meteor::calculateVector()
 {
-	m_velocity.x = getXDirection(Constants::meteorSpeed, m_rotation);
-	m_velocity.y = getYDirection(Constants::meteorSpeed, m_rotation);
+	float speedRatio = generatNumber(7, 10)*0.1f;
+	m_velocity.x = getXDirection(speedRatio*Constants::meteorSpeed, m_rotation);
+	m_velocity.y = getYDirection(speedRatio*Constants::meteorSpeed, m_rotation);
 	setRotation(m_rotation);
 }
 
